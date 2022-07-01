@@ -4,6 +4,9 @@ const nextConfig = {
   env: {
     MAINNET_PRIMARY: process.env.MAINNET_PRIMARY,
     BASE_CLUSTER: process.env.BASE_CLUSTER,
+    STAKE_POOL_ADDRESS: process.env.STAKE_POOL_ADDRESS,
+    REWARD_DISTRIBUTOR_ADDRESS: process.env.REWARD_DISTRIBUTOR_ADDRESS,
+    REWARD_MANAGER: process.env.REWARD_MANAGER,
   },
   async rewrites() {
     return [

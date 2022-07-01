@@ -1,0 +1,54 @@
+diff --git a/node_modules/@cardinal/staking/dist/cjs/programs/rewardDistributor/constants.js b/node_modules/@cardinal/staking/dist/cjs/programs/rewardDistributor/constants.js
+index 68adffd..5152f68 100644
+--- a/node_modules/@cardinal/staking/dist/cjs/programs/rewardDistributor/constants.js
++++ b/node_modules/@cardinal/staking/dist/cjs/programs/rewardDistributor/constants.js
+@@ -4,8 +4,8 @@ exports.RewardDistributorKind = exports.REWARD_DISTRIBUTOR_IDL = exports.REWARD_
+ const tslib_1 = require("tslib");
+ const web3_js_1 = require("@solana/web3.js");
+ const REWARD_DISTRIBUTOR_TYPES = tslib_1.__importStar(require("../../idl/cardinal_reward_distributor"));
+-exports.REWARD_DISTRIBUTOR_ADDRESS = new web3_js_1.PublicKey("rwdNPNPS6zNvtF6FMvaxPRjzu2eC51mXaDT9rmWsojp");
+-exports.REWARD_MANAGER = new web3_js_1.PublicKey("crkdpVWjHWdggGgBuSyAqSmZUmAjYLzD435tcLDRLXr");
++exports.REWARD_DISTRIBUTOR_ADDRESS = new web3_js_1.PublicKey( process.env.REWARD_DISTRIBUTOR_ADDRESS || "rwdNPNPS6zNvtF6FMvaxPRjzu2eC51mXaDT9rmWsojp");
++exports.REWARD_MANAGER = new web3_js_1.PublicKey( process.env.REWARD_MANAGER || "crkdpVWjHWdggGgBuSyAqSmZUmAjYLzD435tcLDRLXr");
+ exports.REWARD_ENTRY_SEED = "reward-entry";
+ exports.REWARD_DISTRIBUTOR_SEED = "reward-distributor";
+ exports.REWARD_DISTRIBUTOR_IDL = REWARD_DISTRIBUTOR_TYPES.IDL;
+diff --git a/node_modules/@cardinal/staking/dist/cjs/programs/stakePool/constants.js b/node_modules/@cardinal/staking/dist/cjs/programs/stakePool/constants.js
+index ab87d5a..85b601c 100644
+--- a/node_modules/@cardinal/staking/dist/cjs/programs/stakePool/constants.js
++++ b/node_modules/@cardinal/staking/dist/cjs/programs/stakePool/constants.js
+@@ -4,7 +4,7 @@ exports.ReceiptType = exports.STAKE_POOL_IDL = exports.POOL_OFFSET = exports.STA
+ const tslib_1 = require("tslib");
+ const web3_js_1 = require("@solana/web3.js");
+ const STAKE_POOL_TYPES = tslib_1.__importStar(require("../../idl/cardinal_stake_pool"));
+-exports.STAKE_POOL_ADDRESS = new web3_js_1.PublicKey("stkBL96RZkjY5ine4TvPihGqW8UHJfch2cokjAPzV8i");
++exports.STAKE_POOL_ADDRESS = new web3_js_1.PublicKey(process.env.STAKE_POOL_ADDRESS || "stkBL96RZkjY5ine4TvPihGqW8UHJfch2cokjAPzV8i");
+ exports.STAKE_POOL_SEED = "stake-pool";
+ exports.STAKE_ENTRY_SEED = "stake-entry";
+ exports.IDENTIFIER_SEED = "identifier";
+diff --git a/node_modules/@cardinal/staking/dist/esm/programs/rewardDistributor/constants.js b/node_modules/@cardinal/staking/dist/esm/programs/rewardDistributor/constants.js
+index f579a1a..e055f12 100644
+--- a/node_modules/@cardinal/staking/dist/esm/programs/rewardDistributor/constants.js
++++ b/node_modules/@cardinal/staking/dist/esm/programs/rewardDistributor/constants.js
+@@ -1,7 +1,7 @@
+ import { PublicKey } from "@solana/web3.js";
+ import * as REWARD_DISTRIBUTOR_TYPES from "../../idl/cardinal_reward_distributor";
+-export const REWARD_DISTRIBUTOR_ADDRESS = new PublicKey("rwdNPNPS6zNvtF6FMvaxPRjzu2eC51mXaDT9rmWsojp");
+-export const REWARD_MANAGER = new PublicKey("crkdpVWjHWdggGgBuSyAqSmZUmAjYLzD435tcLDRLXr");
++export const REWARD_DISTRIBUTOR_ADDRESS = new PublicKey( process.env.REWARD_DISTRIBUTOR_ADDRESS || "rwdNPNPS6zNvtF6FMvaxPRjzu2eC51mXaDT9rmWsojp");
++export const REWARD_MANAGER = new PublicKey(process.env.REWARD_MANAGER || "crkdpVWjHWdggGgBuSyAqSmZUmAjYLzD435tcLDRLXr");
+ export const REWARD_ENTRY_SEED = "reward-entry";
+ export const REWARD_DISTRIBUTOR_SEED = "reward-distributor";
+ export const REWARD_DISTRIBUTOR_IDL = REWARD_DISTRIBUTOR_TYPES.IDL;
+diff --git a/node_modules/@cardinal/staking/dist/esm/programs/stakePool/constants.js b/node_modules/@cardinal/staking/dist/esm/programs/stakePool/constants.js
+index 7229c0e..6f6779a 100644
+--- a/node_modules/@cardinal/staking/dist/esm/programs/stakePool/constants.js
++++ b/node_modules/@cardinal/staking/dist/esm/programs/stakePool/constants.js
+@@ -1,6 +1,6 @@
+ import { PublicKey } from "@solana/web3.js";
+ import * as STAKE_POOL_TYPES from "../../idl/cardinal_stake_pool";
+-export const STAKE_POOL_ADDRESS = new PublicKey("stkBL96RZkjY5ine4TvPihGqW8UHJfch2cokjAPzV8i");
++export const STAKE_POOL_ADDRESS = new PublicKey(process.env.STAKE_POOL_ADDRESS || "stkBL96RZkjY5ine4TvPihGqW8UHJfch2cokjAPzV8i");
+ export const STAKE_POOL_SEED = "stake-pool";
+ export const STAKE_ENTRY_SEED = "stake-entry";
+ export const IDENTIFIER_SEED = "identifier";
