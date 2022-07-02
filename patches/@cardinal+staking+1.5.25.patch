@@ -26,6 +26,19 @@ index ab87d5a..85b601c 100644
  exports.STAKE_POOL_SEED = "stake-pool";
  exports.STAKE_ENTRY_SEED = "stake-entry";
  exports.IDENTIFIER_SEED = "identifier";
+diff --git a/node_modules/@cardinal/staking/dist/cjs/programs/stakePool/instruction.js b/node_modules/@cardinal/staking/dist/cjs/programs/stakePool/instruction.js
+index 3f59354..62a7e05 100644
+--- a/node_modules/@cardinal/staking/dist/cjs/programs/stakePool/instruction.js
++++ b/node_modules/@cardinal/staking/dist/cjs/programs/stakePool/instruction.js
+@@ -217,7 +217,7 @@ const returnReceiptMint = (connection, wallet, params) => tslib_1.__awaiter(void
+             tokenManagerTokenAccount: tokenManagerTokenAccountId,
+             userReceiptMintTokenAccount: userReceiptMintTokenAccount,
+             user: wallet.publicKey,
+-            collector: tokenManager_1.CRANK_KEY,
++            collector: process.env.COLLECTOR ? new web3_js_1.PublicKey(process.env.COLLECTOR) : tokenManager_1.CRANK_KEY,
+             tokenProgram: spl_token_1.TOKEN_PROGRAM_ID,
+             tokenManagerProgram: tokenManager_1.TOKEN_MANAGER_ADDRESS,
+             rent: web3_js_1.SYSVAR_RENT_PUBKEY,
 diff --git a/node_modules/@cardinal/staking/dist/esm/programs/rewardDistributor/constants.js b/node_modules/@cardinal/staking/dist/esm/programs/rewardDistributor/constants.js
 index f579a1a..e055f12 100644
 --- a/node_modules/@cardinal/staking/dist/esm/programs/rewardDistributor/constants.js
@@ -52,3 +65,30 @@ index 7229c0e..6f6779a 100644
  export const STAKE_POOL_SEED = "stake-pool";
  export const STAKE_ENTRY_SEED = "stake-entry";
  export const IDENTIFIER_SEED = "identifier";
+diff --git a/node_modules/@cardinal/staking/dist/esm/programs/stakePool/instruction.js b/node_modules/@cardinal/staking/dist/esm/programs/stakePool/instruction.js
+index d614f45..594bc79 100644
+--- a/node_modules/@cardinal/staking/dist/esm/programs/stakePool/instruction.js
++++ b/node_modules/@cardinal/staking/dist/esm/programs/stakePool/instruction.js
+@@ -5,11 +5,12 @@ import { findMintCounterId, findTokenManagerAddress, } from "@cardinal/token-man
+ import { MetadataProgram } from "@metaplex-foundation/mpl-token-metadata";
+ import { AnchorProvider, Program } from "@project-serum/anchor";
+ import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID, } from "@solana/spl-token";
+-import { SystemProgram, SYSVAR_RENT_PUBKEY } from "@solana/web3.js";
++import { SystemProgram, SYSVAR_RENT_PUBKEY, PublicKey } from "@solana/web3.js";
+ import { STAKE_POOL_ADDRESS, STAKE_POOL_IDL } from ".";
+ import { ReceiptType } from "./constants";
+ import { findStakeAuthorizationId } from "./pda";
+ import { remainingAccountsForInitStakeEntry } from "./utils";
++
+ export const initPoolIdentifier = (connection, wallet, params) => {
+     const provider = new AnchorProvider(connection, wallet, {});
+     const stakePoolProgram = new Program(STAKE_POOL_IDL, STAKE_POOL_ADDRESS, provider);
+@@ -204,7 +205,7 @@ export const returnReceiptMint = (connection, wallet, params) => __awaiter(void
+             tokenManagerTokenAccount: tokenManagerTokenAccountId,
+             userReceiptMintTokenAccount: userReceiptMintTokenAccount,
+             user: wallet.publicKey,
+-            collector: CRANK_KEY,
++            collector: process.env.COLLECTOR ? new PublicKey(process.env.COLLECTOR) : CRANK_KEY,
+             tokenProgram: TOKEN_PROGRAM_ID,
+             tokenManagerProgram: TOKEN_MANAGER_ADDRESS,
+             rent: SYSVAR_RENT_PUBKEY,
